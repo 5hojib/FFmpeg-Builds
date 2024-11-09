@@ -101,9 +101,6 @@ to_df "FROM base"
 sed "s/__PREVLAYER__/$PREVLAYER/g" Dockerfile.final | sort -u >> Dockerfile
 rm Dockerfile.final
 
-###
-### Compile list of configure arguments and add them to the final Dockerfile
-###
 
 get_output() {
     (
