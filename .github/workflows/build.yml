@@ -106,6 +106,8 @@ jobs:
     name: Build target base image
     if: ${{ github.event.inputs.buildOnly != 'true' }}
     needs: build_base
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -166,7 +168,7 @@ jobs:
       fail-fast: false
       matrix:
         target: [linux64]
-        variant: [nonfree 7.1]
+        variant: [nonfree 7.1,nonfree 7.2]
     steps:
       - name: Free Disk-Space
         run: df -h && sudo apt-get clean && docker system prune -a -f && sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc && df -h
@@ -231,7 +233,7 @@ jobs:
       fail-fast: false
       matrix:
         target: [linux64]
-        variant: [nonfree 7.1]
+        variant: [nonfree 7.1,nonfree 7.2]
     steps:
       - name: Free Disk-Space
         run: df -h && sudo apt-get clean && docker system prune -a -f && sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc && df -h
