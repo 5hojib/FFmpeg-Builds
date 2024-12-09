@@ -106,8 +106,6 @@ jobs:
     name: Build target base image
     if: ${{ github.event.inputs.buildOnly != 'true' }}
     needs: build_base
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
